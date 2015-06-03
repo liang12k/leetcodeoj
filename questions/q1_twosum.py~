@@ -1,0 +1,29 @@
+“””
+class Solution(object):
+    # @param {integer[]} nums
+    # @param {integer} target
+    # @return {integer[]}
+    def twoSum(self, nums, target):
+        targetDiffsDict={}
+        for idx,n in enumerate(nums):
+            if targetDiffsDict.get(n):
+                return sorted([idx+1,targetDiffsDict.get(n)+1])
+            targetDiffsDict[target-n]=idx
+            print targetDiffsDict
+“””
+
+class Solution(object):
+    # @param {integer[]} nums
+    # @param {integer} target
+    # @return {integer[]}
+    def twoSum(self, nums, target):
+        targetDiffsList=[]
+        for idx,n in enumerate(nums):
+            if n in targetDiffsList:
+                return sorted([idx+1, targetDiffsList.index(n)+1])
+            targetDiffsList.append(target-n)
+            print targetDiffsDict
+
+
+if __name__=="__main__":
+    print Solution().twoSum([0,4,3,0],0)

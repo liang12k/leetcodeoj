@@ -1,0 +1,10 @@
+class Solution:
+    # @param {integer[]} nums
+# @param {integer} target
+                # @return {integer[]}
+                    def twoSum(self, nums, target):
+                                targetDiffsDict={}
+                                for idx,n in enumerate(nums):
+                                    if targetDiffsDict.get(n):
+                                                        return sorted([idx+1,targetDiffsDict.get(n)+1])
+                                                                targetDiffsDict[target-n]=idx
