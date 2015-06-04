@@ -14,12 +14,10 @@ class Solution:
         while l1 or l2 or carry:
             tempSum=(l1.val if l1 else 0)+(l2.val if l2 else 0)+carry
             temp.next = ListNode(tempSum % 10) # remainder, ones digit
-            temp = temp.next
+            temp = temp.next # assignment order, can't do it all on Line16
             carry = tempSum // 10 # get carry val (either 0 or 1)
-            if l1:
-                l1=l1.next
-            if l2:
-                l2=l2.next
+            if l1: l1=l1.next
+            if l2: l2=l2.next
         return root.next
 
 # ref: https://leetcode.com/discuss/29326/a-python-solution
