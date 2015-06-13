@@ -1,5 +1,5 @@
 '''
-# https://leetcode.com/discuss/21332/python-o-n-2-method-with-some-optimization-88ms
+# https://goo.gl/CO0QoR
 
 Chomolungma - Dynamic Programming solution:
 
