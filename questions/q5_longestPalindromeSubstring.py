@@ -1,6 +1,8 @@
 '''
 # https://leetcode.com/discuss/21332/python-o-n-2-method-with-some-optimization-88ms
 
+Chomolungma - Dynamic Programming solution:
+
 Basic thought is simple. when you increase s by 1 character, you could only
 increase maxPalindromeLen by 1 or 2, and that new maxPalindrome includes this
 new character. Proof: if on adding 1 character, maxPalindromeLen increased by
@@ -22,6 +24,17 @@ comparing string equality with "==" is O(1), and using slicing to substring
 and reverse is O(n) < O(_n_) < O(n^2) (thanks to ChuntaoLu).
 But as slicing is optimized by the interpreter's C code, it should run
 pretty fast.
+
+
+ChuntaoLu explanation on runtime O(n) < O(_n_) < O(N^2)
+
+Great DP solution, it runs much faster than the 'traverse and grow both ways'
+O(n^2) solution, and the reason is exactly that checking string equality
+with '==' is amortized O(1). I am no Python guru, but I am pretty sure slicing
+and reversing is O(k) where k is the sliced/reversed string length, because
+those operations create new string objects and involves copying characters.
+So, technically it is not O(n), but it is about 5 times faster than the
+O(n^2) solution I mentioned.
 '''
 
 class Solution:
