@@ -43,6 +43,8 @@ class Solution:
         if len(s)==0: return 0
         maxLen,start=1,0
         for i in xrange(1,len(s)):
+            # note: the endrange is always 'i+1', one idx after current 'i' idx
+            #       cmp the (i - _n_) prior elems 
             if i-maxLen >=1 and s[i-maxLen-1:i+1]==s[i-maxLen-1:i+1][::-1]:
                 start=i-maxLen-1
                 maxLen+=2
