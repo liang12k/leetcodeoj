@@ -42,10 +42,13 @@ class Solution:
     def longestPalindrome(self, s):
         if len(s)==0: return 0
         maxLen,start=1,0
+        # can start at idx 1 since first char is a palindrome itself
         for i in xrange(1,len(s)):
-            # note: the endrange is always 'i+1', one idx after current 'i' idx
-            #       cmp the (i - _n_) prior elems 
+            # note: the endrange is always 'i+1', inclusive
+            #       cmp the (i - _n_) prior elems up to current i
             if i-maxLen >=1 and s[i-maxLen-1:i+1]==s[i-maxLen-1:i+1][::-1]:
+                # len has to be +1 than current maxLen to get next
+                # possible maxLen+=2, the addt'l elem idx and current elem idx
                 start=i-maxLen-1
                 maxLen+=2
                 # continue iteration because this is a longer string
