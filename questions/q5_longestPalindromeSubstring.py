@@ -49,12 +49,18 @@ class Solution:
             if i-maxLen >=1 and s[i-maxLen-1:i+1]==s[i-maxLen-1:i+1][::-1]:
                 # len has to be +1 than current maxLen to get next
                 # possible maxLen+=2, the addt'l elem idx and current elem idx
+                # idea is elem at (i-maxLen-1) == elem at current i
+                # ex: abcbbcc, longest palindrome is cbbc, (i-maxLen-1) is c, current is c
+                #              now longest str is +2, including both elem 'c'
                 start=i-maxLen-1
                 maxLen+=2
                 # continue iteration because this is a longer string
                 # no need to check its interior elems as this is valid already
                 continue
             if i-maxLen >=0 and s[i-maxLen:i+1]==s[i-maxLen:i+1][::-1]:
+                # idea is elem (i-maxLen) == elem at current i
+                # ex: abbb, longest palindrome is bbb
+                #           now longest str is +1, including new 'b' at current idx
                 start=i-maxLen
                 maxLen+=1
         # return the palindrome substring of max length
