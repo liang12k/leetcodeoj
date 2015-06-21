@@ -3,7 +3,8 @@ class Solution:
     # @param {integer} numRows
     # @return {string}
     def convert(self, s, numRows):
-        # note: the direction is |/|/|/...|
+        # note: the direction is |/|/|/...|/|
+        # 
         # ideas:
         # O(n) go thru whole 's' in single pass
         # need to handle base case of few chars (w applying the logic below)
