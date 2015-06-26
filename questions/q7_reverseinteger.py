@@ -19,6 +19,8 @@ class Solution(object):
     # @param {integer} x
     # @return {integer}
     def reverse(self, x):
+        # **need to catch overflow on int value!**
+        # 
         # requires modulus, division operations
         # shifting numbers & tracking if neg. number (if so, 0-reversednum)
         # modules takes the tail digit,
@@ -26,18 +28,20 @@ class Solution(object):
         # - sum to the latest result * 10 (shifting it)
         # keep dividing to get the next
         # ** repeat until digit is taken
-        
         negflag=False
-        if x<0: negflag=True
+        if x<0:
+            negflag=True
+            x=0-x # make number positive
         res=0
         while(x>0):
             mod=x%10
             x=x/10
             res=res*10+mod
         if negflag:
-            res=0-res
+            res=0-res # if originally negative, flip back to negative
         return res
 
 
 if __name__ == '__main__':
-    Solution().reverse(-123) # fails - output 0, expecting -321
+    # fails - output 9646324351, expecting 0 [overflow]
+    Solution().reverse(1534236469)
