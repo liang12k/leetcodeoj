@@ -26,4 +26,18 @@ class Solution(object):
         # - sum to the latest result * 10 (shifting it)
         # keep dividing to get the next
         # ** repeat until digit is taken
-        pass
+        
+        negflag=False
+        if x<0: negflag=True
+        res=0
+        while(x>0):
+            mod=x%10
+            x=x/10
+            res=res*10+mod
+        if negflag:
+            res=0-res
+        return res
+
+
+if __name__ == '__main__':
+    Solution().reverse(-123) # fails - output 0, expecting -321
