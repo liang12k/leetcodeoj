@@ -4,11 +4,6 @@ Reverse digits of an integer.
 Example1: x = 123, return 321
 Example2: x = -123, return -321
 
-click to show spoilers.
-
-Have you thought about this?
-Here are some good questions to ask before coding.
-
 If the integer's last digit is 0, what should the output be?
 ie, cases such as 10, 100.
 
@@ -19,8 +14,16 @@ How should you handle such cases?
 For the purpose of this problem, assume that your function returns 0
 when the reversed integer overflows.
 '''
+# ref: http://www.programcreek.com/2012/12/leetcode-reverse-integer/
 class Solution(object):
     # @param {integer} x
     # @return {integer}
     def reverse(self, x):
+        # requires modulus, division operations
+        # shifting numbers & tracking if neg. number (if so, 0-reversednum)
+        # modules takes the tail digit,
+        # - make this the leading digit
+        # - sum to the latest result * 10 (shifting it)
+        # keep dividing to get the next
+        # ** repeat until digit is taken
         pass
