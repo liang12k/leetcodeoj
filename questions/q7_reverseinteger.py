@@ -39,9 +39,9 @@ class Solution(object):
             res=res*10+mod
         if negflag:
             res=0-res # if originally negative, flip back to negative
+        # detect overflow
+        # sys.maxint    ==  2147483647 (max)
+        # -sys.maxint-1 == -2147483648 (min)
+        if res>2147483647 or res<-2147483648:
+            res=0
         return res
-
-
-if __name__ == '__main__':
-    # fails - output 9646324351, expecting 0 [overflow]
-    Solution().reverse(1534236469)
