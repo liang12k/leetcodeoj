@@ -33,10 +33,9 @@ class Solution(object):
         num=""
         for s in str:
             if s:
-                if s=="-":
-                    isneg=True
-                    continue
-                elif s=="+":
+                if s in ["-","+"] and signchanged not in [False,True]:
+                    isneg = s=="-"
+                    signchanged=True
                     continue
                 if s.isdigit():
                     num+=s
@@ -53,4 +52,4 @@ class Solution(object):
 
 
 if __name__ == '__main__':
-    Solution().myAtoi("+-2") # expected 0, returned -2
+    Solution().myAtoi("    010") # expected 0, returned -2
