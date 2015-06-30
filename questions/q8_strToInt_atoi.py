@@ -28,4 +28,29 @@ class Solution(object):
     # @param {string} str
     # @return {integer}
     def myAtoi(self, str):
-        return
+        if not str: return 0
+        isalphanum,isneg=False,False
+        num=""
+        for s in str:
+            if s:
+                if s=="-":
+                    isneg=True
+                    continue
+                elif s=="+":
+                    continue
+                if s.isdigit():
+                    num+=s
+                    continue
+                isalphanum=True
+                break
+        if isalphanum: return 0
+        num=int(num)
+        if isneg:
+            num=0-num
+        if num>2147483647 or num<-2147483648:
+            num=0
+        return num
+
+
+if __name__ == '__main__':
+    Solution().myAtoi("+-2") # expected 0, returned -2
