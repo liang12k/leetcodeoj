@@ -32,24 +32,29 @@ class Solution(object):
         isalphanum,isneg=False,False
         num=""
         for s in str:
-            if s:
+            if s!=" ":
+                print "\nis 's': %s\n" % s
                 if s in ["-","+"] and signchanged not in [False,True]:
                     isneg = s=="-"
                     signchanged=True
                     continue
                 if s.isdigit():
                     num+=s
+                    print "\n'isdigit'%s\n" % num
                     continue
                 isalphanum=True
                 break
-        if isalphanum: return 0
+        if isalphanum:
+            print "\n'isalphanum'\n"
+            return 0
         num=int(num)
         if isneg:
             num=0-num
+            print "\n'isneg'\n"
         if num>2147483647 or num<-2147483648:
             num=0
         return num
 
 
 if __name__ == '__main__':
-    Solution().myAtoi("    010") # expected 0, returned -2
+    print Solution().myAtoi("  -0012a42") # expected -12, returned 0
