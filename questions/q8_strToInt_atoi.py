@@ -29,32 +29,36 @@ class Solution(object):
     # @return {integer}
     def myAtoi(self, str):
         if not str: return 0
-        isalphanum=False
         isneg=False
+        # determine if sign is changed or not
+        # None is a neutral value
         signchanged=None
         num=""
         for s in str:
             if s!=" ":
-                print "\nis 's': %s\n" % s
+                # case when it's a valid sign change
                 if s in ["-","+"] and signchanged not in [False,True]:
-                    isneg = s=="-"
+                    isneg = s=="-" # use bool value returned
                     signchanged=True
                     continue
+                # add to current num str
                 if s.isdigit():
-                    num+=s
-                    print "\n'isdigit'%s\n" % num
-                    continue
-                isalphanum=True
+                    num+=s; continue
+                # detect a char or invalid signchange, leave at latest num
                 break
+            # handle cases like '   + 123', '  +0 321', '   +-1'
+            # where sign is changed already too
+            if num or signchanged in [False,True]: break
+        # if blank, return as is
         if not num: return 0
         num=int(num)
-        if isneg:
-            num=0-num
-            print "\n'isneg'\n"
-        if num>2147483647 or num<-2147483648:
-            num=0
+        # bring it back to negative
+        if isneg: num=0-num
+        # leave num at max,min range if outlying beyond int range
+        if num>=2147483647: num=2147483647
+        elif num<=-2147483648: num=-2147483648
         return num
 
 
 if __name__ == '__main__':
-    print Solution().myAtoi("   +0 123") # expected 0, returned 123
+    print Solution().myAtoi("   - 321")
