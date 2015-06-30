@@ -29,7 +29,9 @@ class Solution(object):
     # @return {integer}
     def myAtoi(self, str):
         if not str: return 0
-        isalphanum,isneg=False,False
+        isalphanum=False
+        isneg=False
+        signchanged=None
         num=""
         for s in str:
             if s!=" ":
@@ -44,9 +46,7 @@ class Solution(object):
                     continue
                 isalphanum=True
                 break
-        if isalphanum:
-            print "\n'isalphanum'\n"
-            return 0
+        if not num: return 0
         num=int(num)
         if isneg:
             num=0-num
@@ -57,4 +57,4 @@ class Solution(object):
 
 
 if __name__ == '__main__':
-    print Solution().myAtoi("  -0012a42") # expected -12, returned 0
+    print Solution().myAtoi("   +0 123") # expected 0, returned 123
