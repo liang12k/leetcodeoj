@@ -16,6 +16,7 @@ class Solution(object):
     # @param {integer} x
     # @return {boolean}
     def isPalindrome(self, x):
+        # perhaps a while loop - while(isPalindromeFlag): ... break otherwise
         if x==0: return True
         x=str(x)
         for idx,n in enumerate(x):
