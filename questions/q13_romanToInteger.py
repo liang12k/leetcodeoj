@@ -17,16 +17,11 @@ class Solution(object):
             (1000, 'M'), (900, 'CM'), (500, 'D'),  (400, 'CD'), (100, 'C'), (90, 'XC'),
             (50, 'L'), (40, 'XL'), (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')
         )
-        # keep going until s has finished slicing from left to right
-        while s:
-            # IMPROVE: iterates thru rmnums list of int and roman numeral values
-            #          needlessly goes over repeatedly on s-slicing until done
-            #          eg: MMMIX handles first M, starts over for M etc.
-            for pair in rmnums:
-                n,r=pair
-                lenr=len(r)
-                # handle when roman numeral str matches latest str slice
-                if s[:lenr]==r:
-                    numstr+=n   # sum latest total with new int values
-                    s=s[lenr:]  # slice str to start at next char
+        for pair in rmnums:
+            n,r=pair
+            lenr=len(r)
+            # keep going for 'chained' roman numeral strs
+            while s[:lenr]==r:
+                numstr+=n   # sum latest total with new int values
+                s=s[lenr:]  # slice str to start at next char
         return numstr
