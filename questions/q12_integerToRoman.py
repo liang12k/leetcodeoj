@@ -8,14 +8,15 @@ class Solution(object):
     # @return {string}
     def intToRoman(self, num):
         romanstr=""
-        # list of standard int and their respective roman numeral str
+        # tuple of standard int and their respective roman numeral str
+        # -using tuple as this is fixed & runs faster
         # important to handle the special numbers before a new roman numeral
         # the leading 9, 4 numbers - eg: 900 (CM), 40 (XL)
         # order from larges to least to decrement num from top down (left to right)
-        rmnums=[
+        rmnums=(
             (1000, 'M'), (900, 'CM'), (500, 'D'),  (400, 'CD'), (100, 'C'), (90, 'XC'),
             (50, 'L'), (40, 'XL'), (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')
-        ]
+        )
         for pair in rmnums:
             n,r=pair
             # continue decrementing num with current n value from rmnums list
