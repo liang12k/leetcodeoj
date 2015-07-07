@@ -6,3 +6,22 @@ class Solution(object):
     # @param {string[]} strs
     # @return {string}
     def longestCommonPrefix(self, strs):
+        if not strs: return ""
+        if len(strs)==1: return strs[0]
+        lcp=strs[0]
+        for s in strs[1:]:
+            if lcp=="" or s=="": return ""
+            idx=0
+            while lcp[:idx]==s[:idx]:
+                idx+=1
+                if idx>len(lcp) or idx>len(s):
+                    break
+            lcp=s[:idx]
+            print "lcp: %s; s: %s"%(lcp,s)
+        return lcp
+
+
+if __name__ == '__main__':
+    inp=["c","c"]
+    print Solution().longestCommonPrefix(inp)
+    # expecting "c", getting time limit exceeded
