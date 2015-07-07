@@ -23,4 +23,4 @@ class Solution(object):
 if __name__ == '__main__':
     inp=["a","b"]
     print Solution().longestCommonPrefix(inp)
-    # expecting "", getting "b"
+    # expecting "", getting "b" [error on L18, index goes onward]
