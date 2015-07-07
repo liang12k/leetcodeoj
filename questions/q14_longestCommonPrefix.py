@@ -12,16 +12,15 @@ class Solution(object):
         for s in strs[1:]:
             if lcp=="" or s=="": return ""
             idx=0
+            print "before while - lcp: %s; s: %s"%(lcp,s)
             while lcp[:idx]==s[:idx]:
                 idx+=1
-                if idx>len(lcp) or idx>len(s):
-                    break
             lcp=s[:idx]
-            print "lcp: %s; s: %s"%(lcp,s)
+            print "after while - idx: %d; lcp: %s; s: %s"%(idx,lcp,s)
         return lcp
 
 
 if __name__ == '__main__':
-    inp=["c","c"]
+    inp=["a","b"]
     print Solution().longestCommonPrefix(inp)
-    # expecting "c", getting time limit exceeded
+    # expecting "", getting "b"
