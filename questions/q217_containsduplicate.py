@@ -7,10 +7,14 @@ class Solution(object):
     # @param {integer[]} nums
     # @return {boolean}
     def containsDuplicate(self, nums):
+        # base case
         if not nums: return False
+        # using dict to check if duplicates exist
         ctrdict={}
         for n in nums:
+            # create dict key for 'n' element if it doesn't exist
             ctrdict[n]=ctrdict.get(n,0)+1
-            if ctrdict[n]>1:
-                return True
+            # if duplicate, return True
+            if ctrdict[n]>1: return True
+        # by default, return False, unique list of elements
         return False
