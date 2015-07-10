@@ -7,7 +7,7 @@ class Solution(object):
     # @param {integer[]} nums
     # @return {boolean}
     def containsDuplicate(self, nums):
-        # base case
+        # base case (curious why if a blank nums isn't considered unique)
         if not nums: return False
         # using dict to check if duplicates exist
         ctrdict={}
