@@ -16,10 +16,15 @@ class Solution:
     # @param {string} s
     # @return {boolean}
     def isPalindrome(self, s):
+        # base case
         if not s: return True
+        # convert to list to replace any non alphanum char w ''
         s=list(s)
         for idx,z in enumerate(s):
+            # eplace any non alphanum char w ''
             if not z.isalnum(): s[idx]=""
+            # lowercase all valid chars
             else: s[idx]=z.lower()
+        # rejoin list to sing str
         s="".join(s)
         return s==s[::-1]
