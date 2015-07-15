@@ -18,7 +18,7 @@ class Solution(object):
     def convertToTitle(self, n):
         abcs="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         ans=""
-        while ((n-1)>0):
+        while (n>0):
             ans+=abcs[(n-1)%26]
             n/=26
         return ans[::-1]
