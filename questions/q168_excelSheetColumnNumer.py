@@ -16,15 +16,20 @@ class Solution(object):
     # @param {integer} n
     # @return {string}
     def convertToTitle(self, n):
+        # str of capitalized letters
         abcs="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         ans=""
+        # keep going until n is depleted
         while (n>0):
+            # *note*: to be in %26 range, need to stay in 0-25
             ans+=abcs[(n-1)%26]
-            n/=26
+            # decrement by (n-1) to stay in %26 range
+            n=(n-1)/26
+        # ans str is reversed as math is handling
+        # from tail to head
         return ans[::-1]
 
 
 if __name__ == '__main__':
     inpnum=26
-    # expecting 'AZ', getting 'Z'
     print Solution().convertToTitle(inpnum)
