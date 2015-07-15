@@ -17,9 +17,14 @@ class Solution(object):
     # @return {string}
     def convertToTitle(self, n):
         abcs="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        return "A"*(n/26)+abcs[(n%26)]
+        ans=""
+        while ((n-1)>0):
+            ans+=abcs[(n-1)%26]
+            n/=26
+        return ans[::-1]
 
 
 if __name__ == '__main__':
-    inpnum=43
+    inpnum=26
+    # expecting 'AZ', getting 'Z'
     print Solution().convertToTitle(inpnum)
