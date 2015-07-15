@@ -12,6 +12,7 @@ For example:
     27 -> AA
     28 -> AB 
 '''
+# ref: https://leetcode.com/discuss/19139/python-solution-with-explanation
 class Solution(object):
     # @param {integer} n
     # @return {string}
