@@ -22,12 +22,12 @@ class Solution(object):
         # keep going until n is depleted
         while (n>0):
             # *note*: to be in %26 range, need to stay in 0-25
-            ans+=abcs[(n-1)%26]
+            # appending the letter at head since math is handling
+            # the str from right to left
+            ans=abcs[(n-1)%26]+ans
             # decrement by (n-1) to stay in %26 range
             n=(n-1)/26
-        # ans str is reversed as math is handling
-        # from tail to head
-        return ans[::-1]
+        return ans
 
 
 if __name__ == '__main__':
