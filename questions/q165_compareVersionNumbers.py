@@ -24,12 +24,6 @@ class Solution(object):
         # split string by '.' to get individual nums
         version1=[int(v) for v in version1.split(".")]
         version2=[int(v) for v in version2.split(".")]
-        # make both version nums lists equal in len
-        # place in filler 0s if needed
-        if len(version1)>len(version2):
-            version2+=[0]*(len(version1)-len(version2))
-        elif len(version2)>len(version1):
-            version1+=[0]*(len(version2)-len(version1))
         while version1 and version2:
             # begin at 0 index to cmp
             idx=0
@@ -40,6 +34,11 @@ class Solution(object):
             idx+=1
             version1=version1[idx:]
             version2=version2[idx:]
+        # check if either lists are empty and its
+        # counterpart's list sum is greater than 0
+        # eg: 1.0, 1 inputs
+        if version2==[] and sum(version1): return 1
+        if version1==[] and sum(version2): return -1
         # all else, the version numbers are the same
         return 0
 
