@@ -21,25 +21,26 @@ class Solution(object):
     # @param {string} version2
     # @return {integer}
     def compareVersion(self, version1, version2):
+        # split string by '.' to get individual nums
         version1=[int(v) for v in version1.split(".")]
         version2=[int(v) for v in version2.split(".")]
+        # make both version nums lists equal in len
+        # place in filler 0s if needed
+        if len(version1)>len(version2):
+            version2+=[0]*(len(version1)-len(version2))
+        elif len(version2)>len(version1):
+            version1+=[0]*(len(version2)-len(version1))
         while version1 and version2:
+            # begin at 0 index to cmp
             idx=0
-            print "1- idx: %d" % idx
-            print "1- version1: " + str(version1)
-            print "1- version2: " + str(version2)
             if version1[idx]>version2[idx]: return 1
             elif version2[idx]>version1[idx]: return -1
+            # increment idx by 1 to get the next and remaining values
+            # *note*: [2][1:] returns []
             idx+=1
             version1=version1[idx:]
             version2=version2[idx:]
-            print "2- idx: %d" % idx
-            print "2- version1: " + str(version1)
-            print "2- version2: " + str(version2)
-        print "out- version1: " + str(version1)
-        print "out- version2: " + str(version2)
-        if version1 and not version2: return 1
-        if version2 and not version1: return -1
+        # all else, the version numbers are the same
         return 0
 
 
