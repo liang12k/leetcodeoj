@@ -21,22 +21,29 @@ class Solution(object):
     # @param {string} version2
     # @return {integer}
     def compareVersion(self, version1, version2):
-        version1=[int(v) for v in version1.split(".")]+[0]
-        version2=[int(v) for v in version2.split(".")]+[0]
-        if version1[0]>version2[0]:
-            return 1
-        elif version2[0]>version1[0]:
-            return -1
-        else:
-            if version1[1]>version2[1]:
-                return 1
-            elif version2[1]>version1[1]:
-                return -1
-            return 0
+        version1=[int(v) for v in version1.split(".")]
+        version2=[int(v) for v in version2.split(".")]
+        while version1 and version2:
+            idx=0
+            print "1- idx: %d" % idx
+            print "1- version1: " + str(version1)
+            print "1- version2: " + str(version2)
+            if version1[idx]>version2[idx]: return 1
+            elif version2[idx]>version1[idx]: return -1
+            idx+=1
+            version1=version1[idx:]
+            version2=version2[idx:]
+            print "2- idx: %d" % idx
+            print "2- version1: " + str(version1)
+            print "2- version2: " + str(version2)
+        print "out- version1: " + str(version1)
+        print "out- version2: " + str(version2)
+        if version1 and not version2: return 1
+        if version2 and not version1: return -1
+        return 0
 
 
 if __name__ == '__main__':
-    inp1="10.6.5"
-    inp2="10.6"
+    inp1="1.0"
+    inp2="1"
     print Solution().compareVersion(inp1,inp2)
-    # expecting 1, returning 0
