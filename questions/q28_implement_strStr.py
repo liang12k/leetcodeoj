@@ -9,11 +9,20 @@ class Solution(object):
     # @param {string} needle
     # @return {integer}
     def strStr(self, haystack, needle):
-        if not needle: return 0
-        needleLen=len(needle)
-        idx=0
-        while len(haystack)>=needleLen:
-            if needle==haystack[:needleLen]: return idx
-            idx+=1
-            haystack=haystack[1:]
+        # base case, blank str right at beginning
+        if not needle:
+            return 0
+        # use to slice haystack list
+        needleLen = len(needle)
+        # idx counter to keep track where needle may first occur
+        idx = 0
+        # keep going until len unable to be used for cmp
+        while len(haystack) >= needleLen:
+            # return idx of first needle occurrence
+            if needle == haystack[:needleLen]:
+                return idx
+            # increment idx counter
+            idx += 1
+            # slice haystack list forward
+            haystack = haystack[1:]
         return -1
