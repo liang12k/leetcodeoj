@@ -22,3 +22,16 @@ class Solution(object):
             # decrement
             n /= 2
         return True
+    '''
+    # same runtime as above, 80ms according to leetcode
+    def isPowerOfTwo_alt(self, n):
+        if n <= 0:
+            return False
+        # using str format to get binary format of number
+        n = "{0:b}".format(n).count("1")
+        # if only one occurrence of '1' in binary format str,
+        # it's a power of 2 (eg: 32==10000, 8==100)
+        if n == 1:
+            return True
+        return False
+    '''
