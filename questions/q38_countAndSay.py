@@ -33,6 +33,8 @@ class Solution(object):
     # @param {integer} n
     # @return {string}
     def countAndSay(self, n):
+        # idea: start answ='1'
+        #       use logic below to get nth idx element
         n = str(n)
         ans = ""
         idx = 1
