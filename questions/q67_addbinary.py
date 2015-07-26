@@ -11,6 +11,11 @@ class Solution(object):
     # @param {string} b
     # @return {string}
     def addBinary(self, a, b):
+        # idea is to reverse both str a,b
+        # get the sum of both as int values
+        # using the idx of each elem as the expon for 2**idx
+        # then determine the binary str of the sum
+        # in the while loop using %2 result
         intsum = 0
         a = a[::-1]
         for idx, num in enumerate(a):
@@ -22,8 +27,9 @@ class Solution(object):
                 intsum += (2**idx)
         if not intsum:
             return "0"
-        b = ""  # save space, replace 'b'
+        # save space, replace 'b'
+        b = ""
         while intsum > 0:
-            b = str(intsum%2)+b
+            b = str(intsum % 2)+b
             intsum /= 2
         return b
