@@ -33,25 +33,27 @@ class Solution(object):
     # @param {integer} n
     # @return {string}
     def countAndSay(self, n):
-        # idea: start answ='1'
-        #       use logic below to get nth idx element
-        n = str(n)
-        ans = ""
-        idx = 1
-        currn = n[0]
-        currlen = 1
-        while idx < len(n):
-            if n[idx] == currn:
-                currlen += 1
-            else:
-                ans = ans+str(currlen)+currn
-                currn = n[idx]
-                currlen = 1
-            idx += 1
-        ans = ans+str(currlen)+currn
+        if n == 1:
+            return "1"
+        sstr = "1"
+        while n > 1:
+            ans = ""
+            curr = sstr[0]
+            ctr = 0
+            for num in sstr:
+                num = str(num)
+                if num == curr:
+                    ctr += 1
+                else:
+                    ans += str(ctr)+curr
+                    curr = num
+                    ctr = 1
+            ans += str(ctr)+curr
+            sstr = ans
+            n -= 1
         return ans
 
 
 if __name__ == '__main__':
-    print Solution().countAndSay(1)
-    # expecting '1', returning '11'
+    for n in range(1, 10):
+        print n, Solution().countAndSay(n)
