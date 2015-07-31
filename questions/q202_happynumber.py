@@ -15,3 +15,24 @@ Example: 19 is a happy number
 6**2 + 8**2 = 100
 1**2 + 0**2 + 0**2 = 1
 '''
+class Solution(object):
+    # @param {integer} n
+    # @return {boolean}
+    def isHappy(self, n):
+        if n<0: return False
+        metnums=[n]
+        sum=0
+        while sum!=1:
+            sum+=(n%10)**2
+            n/=10
+            if n==0:
+                if sum in metnums:
+                    return False
+                metnums.append(sum)
+                n=sum
+        return True
+
+
+if __name__ == '__main__':
+    print Solution().isHappy(2)
+    # time exceeded error
