@@ -26,13 +26,19 @@ class Solution(object):
             sum+=(n%10)**2
             n/=10
             if n==0:
+                if sum==1:
+                    return True
                 if sum in metnums:
                     return False
                 metnums.append(sum)
                 n=sum
+                sum=0
+                print "n==0"
+                print "metnumd: ", metnums
+                print "n: ", n
         return True
 
 
 if __name__ == '__main__':
-    print Solution().isHappy(2)
-    # time exceeded error
+    print Solution().isHappy(3)
+    # expecting False
