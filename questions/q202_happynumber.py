@@ -19,32 +19,21 @@ class Solution(object):
     # @param {integer} n
     # @return {boolean}
     def isHappy(self, n):
-        if n<0: return False
-        metnums=[n]
-        sum=0
-        # need to handle sum==1 after entire n's digits done
-        # being squared
-        # the while condition will immediately break if sum==1
-        # during the summing of n's digits!
-        while sum!=1:
-            sum+=(n%10)**2
-            n/=10
-            print "sum: ",sum
-            print "n: ",n
-            if n==0:
-                if sum==1:
-                    return True
-                if sum in metnums:
-                    return False
-                metnums.append(sum)
-                n=sum
-                sum=0
-                print "n==0"
-                print "metnumd: ", metnums
-                print "n: ", n
+        if n < 1:
+            return False
+        metnums = [n]
+        totalsum = 0
+        while totalsum != 1:
+            totalsum = sum([(int(d) % 10)**2 for d in str(n)])
+            if totalsum == 1:
+                return True
+            if totalsum in metnums:
+                return False
+            metnums.append(totalsum)
+            n = totalsum
+            totalsum = 0
         return True
 
 
 if __name__ == '__main__':
     print Solution().isHappy(3)
-    # expecting False
