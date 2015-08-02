@@ -14,11 +14,10 @@ class Solution:
     # @param {string} t
     # @return {boolean}
     def isAnagram(self, s, t):
-        if len(s) != len(t):
-            return False
+        # sort both input strings by char
+        # determine if the sorted lists are the same
         s = sorted(list(s))
         t = sorted(list(t))
-        for pair in zip(s, t):
-            if pair[0] != pair[1]:
-                return False
-        return True
+        return s == t
+
+# total runtime on leetcode is 100ms
