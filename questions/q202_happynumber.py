@@ -19,19 +19,24 @@ class Solution(object):
     # @param {integer} n
     # @return {boolean}
     def isHappy(self, n):
+        # n needs to be a positive int
         if n < 1:
             return False
+        # n add to the array of met numbers
         metnums = [n]
-        totalsum = 0
+        # initial var to hold total sum
+        # list comprehension to convert n to str the get int of each
+        totalsum = sum([(int(d) % 10)**2 for d in str(n)])
+        # while loop until totalSum==1 or a bool returned
+        # such as number already met (looping cycle)
         while totalsum != 1:
-            totalsum = sum([(int(d) % 10)**2 for d in str(n)])
-            if totalsum == 1:
-                return True
             if totalsum in metnums:
                 return False
             metnums.append(totalsum)
+            # set n to latest totalsum
             n = totalsum
-            totalsum = 0
+            # recalculate totalsum
+            totalsum = sum([(int(d) % 10)**2 for d in str(n)])
         return True
 
 
