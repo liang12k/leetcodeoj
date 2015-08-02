@@ -23,6 +23,7 @@ class Solution(object):
         metnums=[n]
         sum=0
         # need to handle sum==1 after entire n's digits done
+        # being squared
         # the while condition will immediately break if sum==1
         # during the summing of n's digits!
         while sum!=1:
