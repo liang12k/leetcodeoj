@@ -22,9 +22,14 @@ class Solution(object):
         if n<0: return False
         metnums=[n]
         sum=0
+        # need to handle sum==1 after entire n's digits done
+        # the while condition will immediately break if sum==1
+        # during the summing of n's digits!
         while sum!=1:
             sum+=(n%10)**2
             n/=10
+            print "sum: ",sum
+            print "n: ",n
             if n==0:
                 if sum==1:
                     return True
