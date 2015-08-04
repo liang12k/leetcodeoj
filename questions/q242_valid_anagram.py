@@ -20,4 +20,4 @@ class Solution:
         t = sorted(list(t))
         return s == t
 
-# total runtime on leetcode is 100ms
+# total runtime on leetcode is 96ms
