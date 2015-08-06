@@ -16,13 +16,14 @@ class Solution(object):
     # @param n, an integer
     # @return an integer
     def reverseBits(self, n):
-        return int("{:08b}".format(n)[::-1], 2)
+        # *note* 32 bits
+        #        int(x, base=2); default base=10
+        return int("{0:032b}".format(n)[::-1], 2)
 
 
 if __name__ == '__main__':
     print Solution().reverseBits(1)
     '''
     input 1 (00000000000000000000000000000001)
-    expecting
     output 2147483648 (10000000000000000000000000000000)
     '''
