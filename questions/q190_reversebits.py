@@ -18,6 +18,8 @@ class Solution(object):
     def reverseBits(self, n):
         # *note* 32 bits
         #        int(x, base=2); default base=10
+        # first reverse n as a str, by 32 'places' (bits)
+        # then convert bits to int of base=2
         return int("{0:032b}".format(n)[::-1], 2)
 
 
