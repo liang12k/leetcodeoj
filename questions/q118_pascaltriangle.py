@@ -16,11 +16,9 @@ class Solution(object):
     # @param {integer} numRows
     # @return {integer[][]}
     def generate(self, numRows):
-        if numRows < 1:
-            return []
         pasc = [[1], [1, 1]]
-        if numRows == 1:
-            return pasc[:1]
+        if numRows < 2:
+            return pasc[:numRows]
         numRows -= 2
         while numRows:
             nextpasc = []
