@@ -2,12 +2,15 @@
 Merge two sorted linked lists and return it as a new list.
 The new list should be made by splicing together the nodes of the
 first two lists.
+
+ref:
+http://jelices.blogspot.com/2014/05/leetcode-python-merge-two-sorted-lists.html
 '''
 # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 
 class Solution(object):
     # @param {ListNode} l1
