@@ -20,6 +20,7 @@ class Solution:
         newLinkedListPtr=newLinkedList
         for node in listOfNodes:
             newLinkedListPtr.next=node
+            newLinkedListPtr=node
         return newLinkedList.next
 
 # breaking on input [1,2]
