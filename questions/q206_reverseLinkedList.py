@@ -11,18 +11,13 @@ class Solution:
     # @param {ListNode} head
     # @return {ListNode}
     def reverseList(self, head):
-        if not head: return [] # head is []
-        listOfNodes=[] if head else [head]
+        if not head:
+            return []
+        newLinkedList = ListNode(0)
+        newLinkedListPtr = newLinkedList
         while head:
-            listOfNodes.insert(0,ListNode(head.val))
-            head=head.next
-        newLinkedList=ListNode(0)
-        newLinkedListPtr=newLinkedList
-        for node in listOfNodes:
-            newLinkedListPtr.next=node
-            newLinkedListPtr=node
+            node = ListNode(head.val)
+            node.next = newLinkedListPtr.next
+            newLinkedListPtr.next = node
+            head = head.next
         return newLinkedList.next
-
-# breaking on input [1,2]
-# expecting [2,1]
-# returning [1]
