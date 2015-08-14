@@ -17,6 +17,12 @@ class Solution(object):
     # @return {ListNode}
     def removeElements(self, head, val):
         nonvals=[]
+        # idea: use a 'slow','fast' pointer; avoiding a list
+        #       slow is at the current node (node.next)
+        #       fast is the next node (node.next.next)
+        #       slow will link w fast
+        #           if it isn't val
+        #           else will wait until a fast comes in non val
         while head:
             if head.val!=val:
                 nonvals.append(head.val)
