@@ -24,6 +24,6 @@ class Solution(object):
             head = head.next
         # return bool on list comparison
         # idea: avoid [::-1] as it uses addt'l space
-        return linkedlistStr == linkedlistStr[::-1]
+        return linkedlistStr == list(reversed(linkedlistStr))
 
-# leetcode states 172ms
+# leetcode states 168ms
