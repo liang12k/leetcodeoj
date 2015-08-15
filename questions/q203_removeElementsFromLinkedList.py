@@ -23,14 +23,15 @@ class Solution(object):
         #       slow will link w fast
         #           if it isn't val
         #           else will wait until a fast comes in non val
+        newhead=ListNode(0)
+        newheadPtr=newhead
+        # approach: new linkedlist to hold valid values
+        #           keep appending to new linkedlist
+        #           return new linkedlist after dummy '0' value
         while head:
             if head.val!=val:
-                nonvals.append(head.val)
+                node=ListNode(head.val)
+                newheadPtr.next=node
+                newheadPtr=node
             head=head.next
-        head=ListNode(0)
-        headPtr=head
-        for val in nonvals:
-            node=ListNode(val)
-            headPtr.next=node
-            headPtr=node
-        return head.next
+        return newhead.next
