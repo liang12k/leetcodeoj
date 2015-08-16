@@ -14,7 +14,9 @@ class Solution(object):
     # @param {integer} num
     # @return {integer}
     def addDigits(self, num):
+        # exit while loop once reached single digits [0:9] inclusive
         while num > 9:
+            # get sum as we go along num until exit
             num = sum([int(_) for _ in str(num)])
         return num
 
