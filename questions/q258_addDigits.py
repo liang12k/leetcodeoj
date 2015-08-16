@@ -20,4 +20,14 @@ class Solution(object):
             num = sum([int(_) for _ in str(num)])
         return num
 
+    def addDigits_alternate(self, num):
+        # https://leetcode.com/discuss/52144/ac-neat-python-solution
+        # operate on base-9 [0:9] inclusive
+        # 68ms
+        if num == 0:
+            return 0
+        if num % 9 == 0:
+            return 9
+        return num % 9
+
 # 72ms per leetcode
