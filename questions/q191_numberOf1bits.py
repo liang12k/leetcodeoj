@@ -11,6 +11,7 @@ class Solution(object):
     # @param n, an integer
     # @return an integer
     def hammingWeight(self, n):
+        # get 32bit str; .format handles the binary conversion
         return "{0:032b}".format(n, "b").count("1")
 
 # 56ms per leetcode
