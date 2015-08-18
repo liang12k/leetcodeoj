@@ -11,6 +11,6 @@ class Solution(object):
     # @param n, an integer
     # @return an integer
     def hammingWeight(self, n):
-        return sum([int(_) for _ in "{0:032b}".format(n, "b")])
+        return "{0:032b}".format(n, "b").count("1")
 
-# 72ms per leetcode
+# 56ms per leetcode
