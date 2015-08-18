@@ -29,5 +29,9 @@ class Solution(object):
         if num % 9 == 0:
             return 9
         return num % 9
+        # alternate one-liner
+        # evaluate in order
+        # (num and 9) to ensure num==0 returns 0 too as (0 and 9) is False
+        # return num%9 or num and 9
 
 # 72ms per leetcode
