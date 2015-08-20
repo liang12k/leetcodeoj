@@ -18,10 +18,11 @@ class Solution(object):
     def deleteDuplicates(self, head):
         # new linkedlist w dummy value 0
         # and create new pointer for it
+        # *note*: what about a slow,fast ptr?, save space
         uniqlist = ListNode(0)
         uniqlistPtr = uniqlist
         # var to determine the latest value
-        # *note* helps w sorted list, dict needed for random vals
+        # *note*: helps w sorted list, dict needed for random vals
         currval = None
         while head:
             if head.val != currval:
