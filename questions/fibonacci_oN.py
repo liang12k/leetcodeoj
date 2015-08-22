@@ -4,9 +4,7 @@ def get_fibonacci_num(n):
     #       'shifting' values left to get new sum
     if n < 3:
         return 1
-    fib1 = 1
-    fib2 = 1
-    sum = 0
+    sum, fib1, fib2 = 0, 1, 1
     while n > 2:
         # calculate next fib num
         sum = fib1 + fib2
@@ -14,5 +12,5 @@ def get_fibonacci_num(n):
         # so sum will be a new value
         fib1 = fib2
         fib2 = sum
-        n-=1
+        n -= 1
     return sum
