@@ -28,12 +28,21 @@ class Solution(object):
         :type head1, head1: ListNode
         :rtype: ListNode
         """
-        if not (headA and headB): return None
+        if not headA or not headB: return None
+        ptrA=headA
+        isChangedA=False
+        ptrB=headB
+        isChangedB=False
         while headA or headB:
-            if headA==headB: return headA
-            if headA.next: headA=headA.next
-            if headB.next: headB=headB.next
+            if ptrA==ptrB: return ptrA
+            ptrA=ptrA.next
+            if not ptrA:
+                if isChangedA: return None
+                ptrA=headB
+                isChangedA=True
+            ptrB=ptrB.next
+            if not ptrB:
+                if isChangedB: return None
+                ptrB=headA
+                isChangedB=True
         return None
-
-# Last executed input:
-# No intersection: [1,3,5,7,9,11,13,15,17,19,21], [2]
