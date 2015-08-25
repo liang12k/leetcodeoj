@@ -106,7 +106,7 @@ class Solution(object):
                 ptrB = headA
                 # set bool flag as ptrA has crossed to headB list
                 isChangedB = True
-        # not needed
+        # defaults, intersection DNE; should be caught in while-loop
         return None
 
 # 404ms per leetcode
