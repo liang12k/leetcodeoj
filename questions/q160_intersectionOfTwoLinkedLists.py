@@ -69,6 +69,7 @@ class Solution(object):
         #         **note**
         #             the real traversal begins for finding intersection
         #             as ptrB begin at an index equivalent to headB len
+        #
         #         ptrA : 2 -> goes to headB, bool flag set for the 'cross'
         #         ptrB : 3
         #         
@@ -83,18 +84,29 @@ class Solution(object):
         isChangedA = False
         ptrB = headB
         isChangedB = False
+        # (IMPROVE) keep going over the linked lists headA,headB
         while headA or headB:
+            # return either ptrA,ptrB as they're the same
             if ptrA == ptrB: return ptrA
+            # traverse thru headA
             ptrA = ptrA.next
             if not ptrA:
+                # if the cross happened, avoid repeat, intersection DNE
                 if isChangedA: return None
+                # cross ptrA to headB
                 ptrA = headB
+                # set bool flag as ptrA has crossed to headB list
                 isChangedA = True
+            # traverse thru headB
             ptrB = ptrB.next
             if not ptrB:
+                # if the cross happened, avoid repeat, intersection DNE
                 if isChangedB: return None
+                # cross ptrA to headB
                 ptrB = headA
+                # set bool flag as ptrA has crossed to headB list
                 isChangedB = True
+        # not needed
         return None
 
 # 404ms per leetcode
