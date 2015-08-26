@@ -30,3 +30,7 @@ class Solution(object):
         return
 
 # 52ms per leetcode
+
+# this question description was confusing
+# the goal is to delete the leading node if it isn't a tail node
+# be sure to handle if the linked list is either None, 1, 2+ node(s)
