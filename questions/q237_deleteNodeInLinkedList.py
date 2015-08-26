@@ -18,7 +18,12 @@ class Solution(object):
         :type node: ListNode
         :rtype: void Do not return anything, modify node in-place instead.
         """
+        # if-statemnt makes sure the node isn't a single node or None
+        # meaning node.next is a tail node
         if node.next:
+            # linked list is 2+ nodes
+            # remove the head node by getting the next node's
+            # .val and .next
             node.val=node.next.val
             node.next=node.next.next
             node=node.next
