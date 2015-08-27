@@ -29,3 +29,6 @@ class Solution(object):
         return nums
 
 # 64ms per leetcode
+
+# ref solution that meeds the constant space complexity
+# https://leetcode.com/discuss/52387/3-line-python-code
