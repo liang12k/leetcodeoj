@@ -29,8 +29,18 @@ class Solution(object):
         return nums
     
     def singleNumber_alt(self, nums):
+        # reduce
+        # apply function of two arguments cumulatively to the items of
+        # iterable, from left to right, so as to reduce the iterable
+        # to a single value.
+        # eg, reduce(lambda x, y: x+y, [1, 2, 3, 4, 5])
+        # calculates ((((1+2)+3)+4)+5)
+        #
+        # operator.xor
+        # Return the bitwise or of a and b.
         xor = reduce(operator.xor, nums)
-        ans = reduce(operator.xor, filter(lambda x : x & xor & -xor, nums))
+        ans = reduce(operator.xor,
+                    filter(lambda x: x & xor & -xor, nums))
         return [ans, ans ^ xor]
 
 # 64ms per leetcode
