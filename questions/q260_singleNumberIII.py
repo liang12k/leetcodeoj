@@ -27,6 +27,11 @@ class Solution(object):
         for k,v in numsdict.iteritems():
             if v==1: nums.append(k)
         return nums
+    
+    def singleNumber_alt(self, nums):
+        xor = reduce(operator.xor, nums)
+        ans = reduce(operator.xor, filter(lambda x : x & xor & -xor, nums))
+        return [ans, ans ^ xor]
 
 # 64ms per leetcode
 
