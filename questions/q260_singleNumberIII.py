@@ -38,6 +38,7 @@ class Solution(object):
         #
         # operator.xor
         # Return the bitwise or of a and b.
+        #
         xor = reduce(operator.xor, nums)
         ans = reduce(operator.xor,
                     filter(lambda x: x & xor & -xor, nums))
