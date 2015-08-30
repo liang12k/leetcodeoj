@@ -39,6 +39,15 @@ class Solution(object):
         # operator.xor
         # Return the bitwise or of a and b.
         #
+        # reduce will apply operator.xor on each nums paired
+        # iterably from L-to-R
+        # operator.xor takes exclusively or of values
+        # eg: 10 ^ 11 -> 01
+        #     1,1==0, 0,1==1
+        #     100 ^ 10 -> 110
+        #     1,_==1, 0,1==1, 0,0==0
+        #     110 ^ 11 -> 101
+        #     1,_==1, 1,1==0, 0,1==1
         xor = reduce(operator.xor, nums)
         ans = reduce(operator.xor,
                     filter(lambda x: x & xor & -xor, nums))
@@ -47,4 +56,5 @@ class Solution(object):
 # 64ms per leetcode
 
 # ref solution that meeds the constant space complexity
+# singleNumber_alt
 # https://leetcode.com/discuss/52387/3-line-python-code
