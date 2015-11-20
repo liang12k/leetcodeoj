@@ -26,6 +26,23 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
+        '''
+            using a fast-slow ptr approach
+            so called 'frog-skipping'
+            
+            get the fast ptr to the node that'll be removed
+            then when it gets to the node, determine:
+            if last node, that means return empty
+                **note** every n is a valid number!
+            else, if there's a fast.next, have the slow ptr
+            go fwd with the fast ptr going fwd
+            
+            when the fast ptr has reached the end,
+            slow ptr has reached nth-node -1 node, need to skip the
+            nth node that's next
+            connect the slow ptr's node.next to the next.next
+            to connect the new linked list, dropping nth-node
+        '''
         slow = fast = head
         for _ in xrange(n):
             fast = fast.next
