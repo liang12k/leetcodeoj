@@ -25,88 +25,46 @@ class ListNode(object):
         self.val = x
         self.next = None
 
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
 class Solution(object):
     def getIntersectionNode(self, headA, headB):
         """
         :type head1, head1: ListNode
         :rtype: ListNode
         """
-        # approach:
-        #     having 2 linked lists, pointers for each list
-        #     let each pointer go thru their respective list
-        #     for the shorter list, its pointer will change (cross)
-        #     over to the other list
-        #     continuing the traversal, the other pointer will reach its
-        #     end of list and cross over to the other list
-        #     at this point, both pointers will begin at the 'same index'
-        #     this traversal will actually determine if there's an
-        #     intersection between the 2 lists (Y-linked list)
-        #     **note**
-        #         an intersection here means both lists merge at a certain
-        #         node, hence Y-shaped linked list
-        #     
-        #     eg:
-        #         len headA > len headB
-        #         therefore, after ptrB crosses to headA, ptrA crosses to headB
-        #         this means ptrA,ptrB begin at equivalent index as if both
-        #         linked lists have same len
-        #         
-        #         headA: 1->3->4->5->x
-        #         headB: 2->4->x
-        #         
-        #         ptrA : 1
-        #         ptrB : 2
-        #         
-        #         ptrA : 3
-        #         ptrB : 4
-        #         
-        #         ptrA : 5
-        #         ptrB : x
-        #         
-        #         ptrA : x
-        #         ptrB : 1 -> goes to headA, bool flag set for the 'cross'
-        #         
-        #         **note**
-        #             the real traversal begins for finding intersection
-        #             as ptrB begin at an index equivalent to headB len
-        #
-        #         ptrA : 2 -> goes to headB, bool flag set for the 'cross'
-        #         ptrB : 3
-        #         
-        #         ptrA : 4
-        #         ptrB : 4
-        # 
-        # base case: blank input(s), ignore
-        if not headA or not headB: return None
-        # set the pointers for headA, headB
-        # and bool flag when either pointer changes lists
-        ptrA = headA
-        isChangedA = False
-        ptrB = headB
-        isChangedB = False
-        # (IMPROVE) keep going over the linked lists headA,headB
-        while headA or headB:
-            # return either ptrA,ptrB as they're the same
-            if ptrA == ptrB: return ptrA
-            # traverse thru headA
-            ptrA = ptrA.next
-            if not ptrA:
-                # if the cross happened, avoid repeat, intersection DNE
-                if isChangedA: return None
-                # cross ptrA to headB
-                ptrA = headB
-                # set bool flag as ptrA has crossed to headB list
-                isChangedA = True
-            # traverse thru headB
-            ptrB = ptrB.next
-            if not ptrB:
-                # if the cross happened, avoid repeat, intersection DNE
-                if isChangedB: return None
-                # cross ptrA to headB
-                ptrB = headA
-                # set bool flag as ptrA has crossed to headB list
-                isChangedB = True
-        # defaults, intersection DNE; should be caught in while-loop
-        return None
-
-# 404ms per leetcode
+        a=headA
+        b=headB
+        lenA=0
+        lenB=0
+        # first get the len of each linked list
+        while a:
+            a=a.next
+            lenA+=1
+        while b:
+            b=b.next
+            lenB+=1
+        # reset the ptrs to orig linked lists
+        a=headA
+        b=headB
+        # while the lens exist, get both to an equal starting node
+        # ^ determined when the len are equal
+        while lenA>0 and lenB>0:
+            if lenA<lenB:
+                b=b.next
+                lenB-=1
+            if lenA>lenB:
+                a=a.next
+                lenA-=1
+            if lenA==lenB:
+                if a==b: return a # intersection
+                # keep decrementing
+                a=a.next
+                b=b.next
+                lenA-=1
+                lenB-=1
+        return # default
