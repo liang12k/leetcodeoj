@@ -18,13 +18,22 @@ class Solution(object):
         :type n: int
         :rtype: void Do not return anything, modify nums1 in-place instead.
         """
+        ## the idea is m, n are the range of [0:_z_]
+        ## where _z_ is for nums1 (m idx), nums2 (n idx)
         n1=nums1[:m]
         n2=nums2[:n]
+        # slice, and extend
         n1.extend(n2)
         n1.sort()
+        # this creates an entire copy of nums1
+        # assign the new n1 to it
         nums1[:]=n1
         
+        ## shorter pythonic 2 liner
         ## http://stackoverflow.com/questions/509211/explain-pythons-slice-notation
         ## modify a copy of nums1 at idx [m:]
+        # seeing as nums1 idx range is [0:m]
+        # don't care abt the rest, so overwrite it
+        # with nums2[:n] values then sort in memory
         # nums1[m:]=nums2[:n]
         # nums1.sort()
