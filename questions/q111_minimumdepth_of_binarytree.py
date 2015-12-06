@@ -22,15 +22,15 @@ class Solution(object):
         mindepth=1
         nodes=[root]
         while nodes:
-            treelayer=[]
+            treelayer=[] # go by tree layer
             for node in nodes:
                 nodeL,nodeR=node.left,node.right
                 if nodeL is None and nodeR is None:
-                    return mindepth
+                    return mindepth # end when left node (w/o children)
                 if nodeL is not None:
                     treelayer.append(nodeL)
                 if nodeR is not None:
                     treelayer.append(nodeR)
             nodes=treelayer
-            mindepth+=1
+            mindepth+=1 # each tree layer means +1 depth
         return mindepth
