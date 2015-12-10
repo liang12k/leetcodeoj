@@ -22,10 +22,15 @@ class Solution(object):
         numsLen=len(nums)
         startidx=0
         endidx=numsLen-1
+        # approach: binary search
+        #           close the start,end idx range
         while endidx!=startidx:
             midpt=(endidx+startidx)/2
             if target<=nums[midpt]:
                 endidx=midpt
             else:
+                # if target > nums[midpt], skip this midpt, begin at next
                 startidx=midpt+1
+        # determine if idx should be this idx or the one after
+        # since this new num can be a duplicate value
         return startidx if target<=nums[startidx] else startidx+1
