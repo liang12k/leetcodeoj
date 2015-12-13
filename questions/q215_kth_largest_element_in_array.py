@@ -17,15 +17,22 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        numsDict={} # use a dict for a 'hack' sort of unsorted nums
-        for n in nums:
-            numsDict[n]=numsDict.get(n,0)+1 # keep counter of each num
-        nums=sorted(numsDict.keys(),reverse=True) # take keys from max downwards
-        for n in nums:
-            if k-numsDict[n]>0:
-                # decrement k from latest max num counter, indicating the kth from max num
-                k-=numsDict[n]
+        pivot=nums[0] # using quickselect; https://en.wikipedia.org/wiki/Quickselect
+        leftList=[]
+        equalList=[]
+        rightList=[]
+        for n in nums: # unsorted nums list, need to contain the vals
+            if n>pivot:
+                rightList+=[n]
+            elif n==pivot:
+                equalList+=[n]
             else:
-                return n # found when kth idx is found
-        
-        
+                leftList+=[n]
+        # determine if length of right,equal,left vs k using recursion
+        # if kth falls into the len of rightList side, the elem is here
+        if k<=len(rightList):
+            return self.findKthLargest(rightList,k)
+        elif (k-len(rightList))<=len(equalList):
+            return equalList[0] # decr the idxs against k b/c rightList side vals are ignored
+        else:
+            return self.findKthLargest(leftList,k-len(rightList)-len(equalList)) # investig into leftList side
