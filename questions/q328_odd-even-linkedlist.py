@@ -41,17 +41,73 @@ class Solution(object):
         evenPtr = head.next
         # run only if even node has following valued nodes to run for
         while evenPtr and evenPtr.next:
-            # temp holds the next node of even's (**note: assignment to this node)
+            # [i] temp holds the next node of even's (**note: assignment to this node)
             tempPtr = evenPtr.next
-            # assign the ptrs to the next nodes (**note: assigning ptrs, not the node itself!)
+            # [ii] assign the ptrs to the next nodes (**note: assigning ptrs, not the node itself!)
             evenPtr.next = evenPtr.next.next
-            # used to have the latest odd node point to first even node
+            # [iii] used to have the latest odd node point to first even node
             tempPtr.next = oddPtr.next
+            # [iv]
             oddPtr.next = tempPtr # (**note: assigning ptr to the node for oddPtr below!)
             # actual assignment of the next odd,even nodes respectively
-            # BUT oddPtr's latest node .next actually points to first even node
+            # [v]
             evenPtr = evenPtr.next
+            # [vi]
+            # BUT oddPtr's latest node .next actually points to first even node
             oddPtr = oddPtr.next
         # return linked list from head, it is changed in-place
         return head
-        
+
+
+'''
+sample diagram of the flow (follow using roman numerals in [...])
+1--->2--->3--->4--->5--->6--->7--->NULL
+
+
+odd = 1, even = 2
+
+o    e
+1--->2--->3--->4--->5--->6--->7--->NULL
+         [i] t
+
+o    e    t
+1--->2--->3--->4--->5--->6--->7--->NULL
+     |         ^
+     |         |
+     ----------- [ii] e.next (not actually assigning e to this yet)
+
+
+o    e    t
+1--->2--->3--->4--->5--->6--->7--->NULL
+     ^    |
+     |    |
+     ------ [iii] t.next (not actually assigning t to this yet)
+
+
+o    e    t
+1--->2--->3--->4--->5--->6--->7--->NULL
+|         ^
+|         |
+----------- [iv] o.next (not actually assigning o to this yet)
+
+
+o         t    e
+1--->2--->3--->4--->5--->6--->7--->NULL
+     |         ^
+     |         |
+     ----------- [v] e (assigning e to 4)
+
+
+     ---------------------
+     |                   |
+     |         t         v
+     |         e         e
+1    2<--------3         4--->5--->6--->7--->NULL
+|       [iii]  ^
+|              |
+--------------- [vi] o (assigning o to 3)
+
+as displayed, in one iteration, the latest odd node
+points to the first even node because of step [iii]
+the odd node will take temp and its .next
+'''
