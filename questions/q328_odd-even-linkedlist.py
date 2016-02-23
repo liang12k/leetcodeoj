@@ -140,11 +140,12 @@ the odd node will take temp and its .next
      |              ^
      |              |
      ---------------- [iv] o.next
+                      [vi] o
 
 
           ----------- [iii] t.next
           |         |
-     o    V         t    e
+     o    V    e    t    
 1--->3--->2--->4    5--->6--->7--->NULL
                |         ^
                |         |
@@ -153,13 +154,14 @@ the odd node will take temp and its .next
 
           ----------- [iii] t.next
           |         |
-     o    V         t    e
+     o    V    e    t    
 1--->3    2--->4    5--->6--->7--->NULL
      |         }    ^    ^
      |         }    |    } 
      |         ~~~~~|~~~~~ [v] e
      |              |
-     ---------------- [vi] o
+     ---------------- [iv] o.next
+                      [vi] o
 
 
           o              e
@@ -176,4 +178,23 @@ rinse and repeat
 **note** from the 2nd iteration diagram, odd ptr will never touch NULL
          it'll be the even node that detects it in while-loop condition
          this continues until the end of sequence
+
+
+final iteration
+
+               ---------------- [iii] t.next
+               |              |
+          o    V         e    t    
+1--->3--->5    2--->4--->6--->7--->NULL
+          |              }    ^    ^
+          |              }    |    } 
+          |              ~~~~~|~~~~~ [v] e
+          |                   |
+          --------------------- [iv] o.next
+                                [vi] o
+
+
+               o                   e
+1--->3--->5--->7--->2--->4--->6--->NULL
+
 '''
