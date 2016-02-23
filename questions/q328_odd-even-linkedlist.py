@@ -110,4 +110,70 @@ o         t    e
 as displayed, in one iteration, the latest odd node
 points to the first even node because of step [iii]
 the odd node will take temp and its .next
+
+
+     o         e
+1--->3--->2--->4--->5--->6--->7--->NULL
+
+
+     o         e
+1--->3--->2--->4--->5--->6--->7--->NULL
+                   [i] t
+
+
+     o         e    t
+1--->3--->2--->4--->5--->6--->7--->NULL
+               |         ^
+               |         |
+               ----------- [ii] e.next
+
+
+     o         e    t
+1--->3--->2--->4--->5--->6--->7--->NULL
+          ^         |
+          |         |
+          ----------- [iii] t.next (the latest is o=3, .next=2)
+          
+
+     o         e    t
+1--->3--->2--->4--->5--->6--->7--->NULL
+     |              ^
+     |              |
+     ---------------- [iv] o.next
+
+
+          ----------- [iii] t.next
+          |         |
+     o    V         t    e
+1--->3--->2--->4    5--->6--->7--->NULL
+               |         ^
+               |         |
+               ----------- [v] e
+
+
+          ----------- [iii] t.next
+          |         |
+     o    V         t    e
+1--->3    2--->4    5--->6--->7--->NULL
+     |         }    ^    ^
+     |         }    |    } 
+     |         ~~~~~|~~~~~ [v] e
+     |              |
+     ---------------- [vi] o
+
+
+          o              e
+1--->3--->5--->2--->4--->6--->7--->NULL
+
+
+again, [iii] t.next always points to the first even node.
+t takes the latest odd node in [i]
+BUT t.next [iii] points to odd node's .next, which is 2
+
+
+rinse and repeat
+
+**note** from the 2nd iteration diagram, odd ptr will never touch NULL
+         it'll be the even node that detects it in while-loop condition
+         this continues until the end of sequence
 '''
