@@ -45,11 +45,11 @@ class Solution(object):
             tempPtr = evenPtr.next
             # assign the ptrs to the next nodes (**note: assigning ptrs, not the node itself!)
             evenPtr.next = evenPtr.next.next
-            # # TODO don't understand this tempPtr.next = oddPtr.next line
-            # used to join the latest odd node
+            # used to have the latest odd node point to first even node
             tempPtr.next = oddPtr.next
             oddPtr.next = tempPtr # (**note: assigning ptr to the node for oddPtr below!)
             # actual assignment of the next odd,even nodes respectively
+            # BUT oddPtr's latest node .next actually points to first even node
             evenPtr = evenPtr.next
             oddPtr = oddPtr.next
         # return linked list from head, it is changed in-place
